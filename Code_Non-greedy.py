@@ -1,3 +1,21 @@
+def maximize(a, b, n):
+    # Finds the largest amount to use the machine to minimize uses.
+    previous_different = False
+    machine_uses = 0
+    i = 0
+    while i < n:
+        if a[i] != b[i]:
+            a[i] = b[i]
+            if previous_different is False:
+                machine_uses += 1
+                previous_different = True
+        else:
+            previous_different = False
+
+        i += 1  # go to next char
+    print(machine_uses)
+
+
 # get users input on strings A, B, and String length
 N = int(input())  # convert input to a integer
 print(N)
@@ -14,28 +32,5 @@ if len(A) != N or len(B) != N:
 # convert A and B to lists so that they are easier to work with
 A = list(A)
 B = list(B)
-numchars = N
-i = 0
-strchanges = 0
-arraystrs = []
-previousdifferent = False
-while i < N:
-    if A[i] != "G" or A[i] != "H":
-        exit(1)
-    if B[i] != "G" or B[i] != "H":
-        exit(1)
-    if A[i] != B[i]:
-        A[i] = B[i]
-        if previousdifferent is False:
-            #            buffer = buffer[i:] + B[i]
-            strchanges += 1
-            previousdifferent = True
-    else:
-        previousdifferent = False
+maximize(A, B, N)
 
-    i += 1  # go to next char
-
-#print(arraystrs)
-print(strchanges)
-print(A)
-print(B)
